@@ -1,4 +1,21 @@
-.body {
-    background-color: black;
-    color: white;    
+body {
+    background-color: #000; 
+    color: #fff; 
+    font-family: 'Arial', sans-serif; 
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: #fff; 
+    text-decoration: none; /* Removes underline from links */
+}
+
+nav ul {
+    list-style-type: none; /* Removes bullet points from list */
+    padding: 0;
+}
+
+nav ul li {
+    display: inline; /* Displays the list items in a row */
+    margin-right: 10px; /* Spacing between menu items */
 }
