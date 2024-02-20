@@ -5,16 +5,26 @@
     <title>personal space</title>
     <link rel="icon" href="assets/images/punpun.ico">
     <link rel="stylesheet" href="assets/css/main.css">
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@2.7.0/dist/vue.js"></script>
+    <!-- Vue Router -->
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
 </head>
 <body>
-    <div class="container">
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="pages/about.html">About Me</a></li>
-                <li><a href="pages/portfolio.html">Portfolio</a></li>
-            </ul>
-        </nav>
+    <div id="app">
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><router-link to="/">Home</router-link></li>
+                    <li><router-link to="/about">About Me</router-link></li>
+                    <li><router-link to="/portfolio">Portfolio</router-link></li>
+                </ul>
+            </nav>
+            <!-- Placeholder for the component to be rendered based on the route -->
+            <router-view></router-view>
+        </div>
     </div>
+    <script src="assets/js/router.js"></script>
 </body>
 </html>
