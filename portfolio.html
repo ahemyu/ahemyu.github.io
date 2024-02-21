@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>personal space</title>
-    <link rel="icon" href="assets/images/punpun.ico">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <meta charset="UTF-8">
+    <title>Portfolio - Emre</title>
+    <link rel="stylesheet" href="assets/css/portfolio.css"> <!-- Adjust CSS path as needed -->
 </head>
 <body>
-    <div class="container">
+    <header>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Me</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
             </ul>
         </nav>
-        <header>
-            <h1>My Portfolio</h1>
-        </header>
-    </div>
-    <!-- First list the places I worked at and what I did there-->
-    <h2>Work Experience</h2>
-    <p>Working Student Software Development at CQSE, 15th February 2024 until now</p>
-    <!-- I am working in the dev team for the teamscale application, mostly backend in java and some frontend in React/JS, mainly doing small features, bug fixing and testing with Selenium-->
-
-    <p>Working Student Software Development at Mitsubishi Electric German Branch, 1th September 2023 until February 2024</p>
-    <!--Mainly did database related work like updating, cleaning and maintaining the databases of the various products(MongoDB, Scripts in Python), and 
-    some frontend work with Vue.js, implementing some websites and dashboards. Also wrote some Webscrapers to automate various tasks, link my working reference-->
-    <!-- Then list the projects I did and provide the github links-->
-    <h2>Projects</h2>
-    <!--Splitter (clean it up already chigga)-->
-    <!-- Hackathon-->
-    <!-- Vibecaster-->
-
-    <h2>Interests</h2>
-    <!-- LLMs and Autonomous Driving (Computer Vision)-->
-    <!--Code Quality assesment and tools -->
-    <!--Software Architectures -->
+    </header>
+    <main>
+        <section class="hero">
+            <h1>I am deeply fascinated by the possible applications and wonders that computers allow us to create for each other.</h1>
+        </section>
+        <section class="experience">
+            <h2>Experience</h2>
+            <div class="experience-item">
+                <h3>Working Student Software Development at CQSE GmbH (Feb 2024 - Present)</h3>
+                <p>Contributing to the Teamscale Software Quality Analysis tool within the UI/Usability and Test Coverage Squad. Responsibilities include developing new features, bug fixes, and test writing to ensure code reliability.</p>
+            </div>
+            <div class="experience-item">
+                <h3>Working Student Software Development at Mitsubishi Electric German Branch (Sep 2023 - Feb 2024)</h3>
+                <p>Engaged in the FA-EDC department, focusing on database maintenance and development for product management (MongoDB), building customer-facing websites, and expanding REST APIs to comply with Industry 4.0 standards.</p>
+            </div>
+            <div class="experience-item">
+                <h3>Teaching Assistant at Heinrich-Heine University Düsseldorf (Oct 2022 - Aug 2023)</h3>
+                <p>Facilitated courses on Java programming basics and computer network fundamentals. Tasks included leading tutorials, evaluating student work, and participating in exam design and grading, covering topics from programming essentials to networking protocols.</p>
+            </div>
+        </section>
+        <!-- Placeholder sections for Education, Skills, and Projects will follow here -->
+    </main>
+    <footer>
+        <p>© 2024 ahemyu. All rights reserved.</p>
+    </footer>
 </body>
 </html>
