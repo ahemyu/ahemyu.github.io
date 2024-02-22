@@ -2,7 +2,7 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #121212; /* Maintain dark background */
+    background-color: #121212; 
     color: #ffffff;
 }
 
@@ -26,17 +26,17 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #39ff14; /* Modified to a more subtle cyberpunk green */
+    color: #39ff14; 
     font-size: 1.2em;
 }
 
 nav ul li a.active, nav ul li a:hover {
-    color: #ff0099; /* Cyberpunk pink for active/hover states */
+    color: #ff0099; 
 }
 
 header h1 {
     text-align: center;
-    color: #ff7600; /* Neon orange for headers */
+    color: #ff7600; 
     padding: 20px 0;
 }
 
@@ -45,7 +45,7 @@ header h1 {
 }
 
 .interests h2, .books h3, .anime h3, .genre h4 {
-    color: #4affff; /* Soft neon blue for interest headers */
+    color: #4affff;
 }
 
 .genre ul, .anime ul {
@@ -59,30 +59,28 @@ header h1 {
 
 .genre li:before, .anime li:before {
     content: "▹";
-    color: #7fff00; /* Neon green for bullet points */
+    color: #7fff00; 
     padding-right: 8px;
 }
 
-/* Subtle Glowing Text */
 .glowy-text {
     color: #39ff14;
     text-shadow: 0 0 3px #39ff14, 0 0 5px #39ff14;
 }
 
-/* Hover effect for links to simulate a mild cyberpunk neon sign */
+
 a:hover {
     color: #ff0099;
     text-shadow: 0 0 5px #ff0099, 0 0 10px #ff0099;
 }
 
-/* Background animation for the header */
 .section-background {
     background: linear-gradient(270deg, #0f0, #0099ff, #0ff);
     background-size: 600% 600%;
     animation: pulseBackground 10s ease infinite;
 }
 
-/* Adjusted Pulse Background Animation */
+
 @keyframes pulseBackground {
     0% {
         background-position: 0% 50%;
@@ -95,7 +93,7 @@ a:hover {
     }
 }
 
-/* Adding a subtle scanline effect to the background for that cyberpunk vibe */
+
 body::after {
     content: '';
     position: fixed;
@@ -110,11 +108,10 @@ body::after {
         transparent 1px,
         transparent 2px
     );
-    pointer-events: none; /* Allows click-through */
+    pointer-events: none; 
     z-index: 9999;
 }
 
-/* Subtle flicker effect for certain elements to add a dynamic but not overwhelming feel */
 @keyframes flicker {
     0%, 100% {
         opacity: 1;
@@ -124,12 +121,10 @@ body::after {
     }
 }
 
-/* Apply the flicker animation to headers */
 header h1, .interests h2, .books h3, .anime h3, .genre h4 {
     animation: flicker 3s linear infinite;
 }
 
-/* Media query for responsiveness */
 @media (max-width: 768px) {
     nav ul li {
         margin-right: 10px;
@@ -146,4 +141,18 @@ header h1, .interests h2, .books h3, .anime h3, .genre h4 {
     .interests h2, .books h3, .anime h3, .genre h4 {
         font-size: 1.3em;
     }
+}
+
+@keyframes softPulse {
+    0%, 100% {
+        color: #ff00ff; 
+        text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+    }
+    50% {
+        color: #8800ff; 
+        text-shadow: 0 0 10px #8800ff, 0 0 20px #8800ff;
+    }
+}
+.video-games li {
+    animation: softPulse 3s ease-in-out infinite;
 }
