@@ -53,9 +53,8 @@ nav ul li a:hover, nav ul li a.active {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('path-to-your-background-image.jpg');
-    background-size: cover;
-    background-position: center;
+    /* background-color: var(--background-color); Or any color you prefer */
+    background: linear-gradient(45deg, #1e88e5, #5e35b1);
     text-align: center;
 }
 
