@@ -1,0 +1,167 @@
+/* --- Globale Stile & Variablen --- */
+:root {
+    --primary-color: #0a2b4c; /* Ein tiefes, professionelles Blau */
+    --secondary-color: #4a5568; /* Ein weiches Grau für Text */
+    --background-color: #f7fafc; /* Ein sehr heller Grauton für den Hintergrund */
+    --card-background: #ffffff; /* Weiß für Karten und Abschnitte */
+    --border-color: #e2e8f0;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--secondary-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+h2 {
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-top: 40px;
+}
+
+/* --- Hero / Header Bereich --- */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow);
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--primary-color);
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.hero h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.hero .subtitle {
+    font-size: 1.2em;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* --- Inhaltsabschnitte --- */
+section {
+    background-color: var(--card-background);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+/* --- Leistungsliste --- */
+#services ul {
+    list-style: none;
+    padding: 0;
+}
+
+#services li {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+
+#services li:last-child {
+    border-bottom: none;
+}
+
+#services li:hover {
+    background-color: var(--background-color);
+}
+
+#services li strong {
+    color: var(--primary-color);
+}
+
+/* --- Tech Stack --- */
+.stack-list p {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.stack-list p:last-child {
+    border-bottom: none;
+}
+
+.stack-list strong {
+    display: inline-block;
+    width: 180px; /* Sorgt für eine saubere Ausrichtung */
+    color: var(--primary-color);
+}
+
+/* --- Kontaktbereich --- */
+.contact-info {
+    background-color: #eef2f7; /* Leicht bläulicher Hintergrund zur Hervorhebung */
+    border-left: 4px solid var(--primary-color);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+
+.contact-info p {
+    margin: 5px 0;
+}
+
+.contact-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 0.9em;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    .stack-list strong {
+        display: block;
+        width: auto;
+        margin-bottom: 5px;
+    }
+}
