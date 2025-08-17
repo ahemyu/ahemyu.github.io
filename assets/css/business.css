@@ -65,6 +65,22 @@ h2 {
     margin-top: 5px;
 }
 
+.social-links {
+    margin-top: 15px;
+}
+
+.social-links a {
+    color: var(--primary-color);
+    font-size: 1.8em; /* Macht das Icon größer */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--secondary-color);
+}
+
+
 /* --- Inhaltsabschnitte --- */
 section {
     background-color: var(--card-background);
