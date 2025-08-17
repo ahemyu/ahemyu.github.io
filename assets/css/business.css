@@ -12,7 +12,6 @@
     --border-color: #475569;
     --gradient-primary: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
     --gradient-secondary: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -32,7 +31,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Navigation */
+/* Navigation - Fixed */
 .navbar {
     position: fixed;
     top: 0;
@@ -73,6 +72,8 @@ body {
     display: flex;
     list-style: none;
     gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-link {
@@ -112,6 +113,7 @@ body {
     color: var(--text-primary);
     font-size: 1.5rem;
     cursor: pointer;
+    padding: 0.5rem;
 }
 
 /* Container */
@@ -505,7 +507,7 @@ footer {
     transform: translateY(0);
 }
 
-/* Responsive Design */
+/* Responsive Design - FIXED */
 @media (max-width: 768px) {
     .mobile-menu-toggle {
         display: block;
@@ -524,6 +526,7 @@ footer {
         align-items: center;
         padding-top: 2rem;
         transition: left 0.3s ease;
+        gap: 0;
     }
 
     .nav-menu.active {
@@ -532,10 +535,31 @@ footer {
 
     .nav-menu li {
         margin: 1rem 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .container {
+        padding: 0 1rem;
     }
 
     .hero h1 {
         font-size: 2.5rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .profile-image {
+        width: 150px;
+        height: 150px;
     }
 
     .about-content {
@@ -560,12 +584,12 @@ footer {
         gap: 1.5rem;
     }
 
-    .container {
-        padding: 0 1rem;
-    }
-
     section {
         padding: 4rem 0;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
     }
 }
 
@@ -574,12 +598,11 @@ footer {
         font-size: 2rem;
     }
 
-    .hero .subtitle {
-        font-size: 1.1rem;
+    .service-card {
+        padding: 1.5rem;
     }
 
-    .profile-image {
-        width: 150px;
-        height: 150px;
+    .contact-info {
+        padding: 2rem;
     }
 }
