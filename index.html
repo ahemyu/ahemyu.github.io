@@ -1,36 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>わたし の ページ </title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Emre Gökcek</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background: #0f172a;
+      color: #f1f5f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .chat-container {
+      width: 100%;
+      max-width: 600px;
+      height: 90vh;
+      background: #1e293b;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .message {
+      max-width: 80%;
+      padding: 12px 16px;
+      border-radius: 16px;
+      line-height: 1.4;
+      font-size: 15px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeIn 0.3s forwards;
+    }
+
+    .message.bot {
+      background: #334155;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+
+    .message.user {
+      background: #3b82f6;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .typing-indicator {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      padding: 8px 12px;
+      background: #334155;
+      border-radius: 12px;
+      width: fit-content;
+      margin-bottom: 8px;
+    }
+
+    .typing-indicator span {
+      width: 6px;
+      height: 6px;
+      background: #f1f5f9;
+      border-radius: 50%;
+      animation: blink 1.4s infinite both;
+    }
+
+    .typing-indicator span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .typing-indicator span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes blink {
+      0%, 80%, 100% { opacity: 0.2; }
+      40% { opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .chat-input {
+      padding: 16px;
+      background: #0f172a;
+      border-top: 1px solid #334155;
+    }
+
+    .chat-input input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      background: #1e293b;
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    .chat-input input:disabled {
+      opacity: 0.6;
+    }
+  </style>
 </head>
 <body>
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>Emre Gökcek</h1>
-                <p>CS Student | AI Enthusiast | Learning how Computers work</p>
-                <div class="social-links">
-                    <a href="https://twitter.com/ahemyu1" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.linkedin.com/in/emre-g%C3%B6kcek-0928a625b/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/ahemyu" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-        </section>
-        <section id="about">
-            <h2>About Me</h2>
-            <p>I am a 24-year-old CS Student at Heinrich-Heine University Düsseldorf, currently in my last semester. I really like coding in Python and am really fascinated by the recent progress in AI.</p>
-            <p>I am currently working as a Data Science Working Student at FoxBase (started as in intern), where I focus on the AI side of the product, mainly semantic search and RAG.</p>
-            <p>At the same time I am currently writing my Thesis which is about using deep RL (mainly PPO) to train quadruped locomotion policies in the new open source simulator <a href="https://genesis-embodied-ai.github.io/">Genesis</a></p>
-            <p> On the side I also freelance for the AI Training Platform Outlier where I work on projects where I do Prompt Engineering, LLM Evaluation and other related LLM stuff.</p>
-            <p>Other than coding and tinkering with LLMs I am really into Nogi Grappling, learning Japanese (Currently A2 level) and reading russian novels. I also use Linux btw.</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Emre Gökcek. All rights reserved.</p>
-    </footer>
+  <div class="chat-container">
+    <div class="chat-messages" id="chat"></div>
+    <div class="chat-input">
+      <input type="text" placeholder="Type a message..." disabled />
+    </div>
+  </div>
+
+  <script>
+    const chat = document.getElementById("chat");
+
+    // Predefined conversation
+    const conversation = [
+      { sender: "bot", text: "Hello, how can I help you today?" },
+      { sender: "user", text: "Tell me who Emre Gökcek is" },
+      { sender: "bot", text: "Emre Gökcek is a CS student at Heinrich-Heine University Düsseldorf, an AI enthusiast, and currently working in Data Science with a focus on semantic search and RAG." },
+      { sender: "user", text: "What are his main technologies and skills?" },
+      { sender: "bot", text: "He mainly works with Python, Data Science, Deep Learning, Reinforcement Learning, and also has experience with JavaScript and modern web technologies." },
+      { sender: "user", text: "What experience does he have?" },
+      { sender: "bot", text: "He has worked as a Data Science Working Student at FoxBase, focusing on AI-driven solutions, and has freelanced for Outlier on LLM evaluation and prompt engineering projects. He is also writing his thesis on deep reinforcement learning for quadruped locomotion." },
+      { sender: "user", text: "Where can I contact him?" },
+      { sender: "bot", text: "You can reach him on LinkedIn, GitHub, or Twitter (X). Here are the links:\n\n🔗 LinkedIn: https://www.linkedin.com/in/emre-g%C3%B6kcek-0928a625b/\n🔗 GitHub: https://github.com/ahemyu\n🔗 Twitter: https://twitter.com/ahemyu1" }
+    ];
+
+    // Typing speeds
+    const botSpeed = 20;   // ms per character
+    const userSpeed = 50;  // slower to mimic real typing
+
+    async function playConversation() {
+      for (let i = 0; i < conversation.length; i++) {
+        const { sender, text } = conversation[i];
+
+        if (sender === "bot") {
+          // Show typing indicator
+          const indicator = document.createElement("div");
+          indicator.className = "typing-indicator";
+          indicator.innerHTML = "<span></span><span></span><span></span>";
+          chat.appendChild(indicator);
+          chat.scrollTop = chat.scrollHeight;
+
+          await new Promise(r => setTimeout(r, 800)); // wait before showing bot text
+          chat.removeChild(indicator);
+        }
+
+        await typeMessage(sender, text, sender === "bot" ? botSpeed : userSpeed);
+      }
+    }
+
+    function typeMessage(sender, text, speed) {
+      return new Promise(resolve => {
+        const msg = document.createElement("div");
+        msg.className = `message ${sender}`;
+        chat.appendChild(msg);
+        chat.scrollTop = chat.scrollHeight;
+
+        let i = 0;
+        const interval = setInterval(() => {
+          msg.textContent += text[i];
+          i++;
+          chat.scrollTop = chat.scrollHeight;
+          if (i >= text.length) {
+            clearInterval(interval);
+            resolve();
+          }
+        }, speed);
+      });
+    }
+
+    // Start conversation on load
+    playConversation();
+  </script>
 </body>
 </html>
