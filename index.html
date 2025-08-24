@@ -13,6 +13,7 @@
       animation: gradientShift 15s ease infinite;
       color: #f1f5f9;
       height: 100vh;
+      width: 100vw;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -26,14 +27,11 @@
 
     .chat-container {
       width: 100%;
-      max-width: 800px;
-      height: 95vh;
+      height: 100%;
       background: rgba(30, 41, 59, 0.95);
-      border-radius: 12px;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     }
 
     /* Header bar */
@@ -186,17 +184,17 @@
   <script>
     const chat = document.getElementById("chat");
 
-    // Predefined conversation
+    // Predefined conversation (now in "you" / "I" perspective)
     const conversation = [
       { sender: "bot", text: "Hello, how can I help you today?" },
-      { sender: "user", text: "Tell me who Emre Gökcek is" },
-      { sender: "bot", text: "Emre Gökcek is a CS student at Heinrich-Heine University Düsseldorf, an AI enthusiast, and currently working in Data Science with a focus on semantic search and RAG." },
-      { sender: "user", text: "What are his main technologies and skills?" },
-      { sender: "bot", text: "He mainly works with Python, Data Science, Deep Learning, Reinforcement Learning, and also has experience with JavaScript and modern web technologies." },
-      { sender: "user", text: "What experience does he have?" },
-      { sender: "bot", text: "He has worked as a Data Science Working Student at FoxBase, focusing on AI-driven solutions, and has freelanced for Outlier on LLM evaluation and prompt engineering projects. He is also writing his thesis on deep reinforcement learning for quadruped locomotion." },
-      { sender: "user", text: "Where can I contact him?" },
-      { sender: "bot", text: "You can reach him on LinkedIn, GitHub, or Twitter (X). Here are the links:\n\n🔗 LinkedIn: https://www.linkedin.com/in/emre-g%C3%B6kcek-0928a625b/\n🔗 GitHub: https://github.com/ahemyu\n🔗 Twitter: https://twitter.com/ahemyu1" }
+      { sender: "user", text: "Who are you?" },
+      { sender: "bot", text: "I’m Emre Gökcek, a CS student at Heinrich-Heine University Düsseldorf. I’m passionate about AI and currently work in Data Science, focusing on semantic search and retrieval-augmented generation." },
+      { sender: "user", text: "What are your main technologies and skills?" },
+      { sender: "bot", text: "I mainly work with Python, Data Science, Deep Learning, and Reinforcement Learning. I also have experience with JavaScript and modern web technologies." },
+      { sender: "user", text: "What experience do you have?" },
+      { sender: "bot", text: "I’ve worked as a Data Science Working Student at FoxBase, focusing on AI-driven solutions. I’ve also freelanced for Outlier, where I worked on LLM evaluation and prompt engineering. On top of that, I’m writing my thesis on deep reinforcement learning for quadruped locomotion." },
+      { sender: "user", text: "Where can I contact you?" },
+      { sender: "bot", text: "You can reach me on LinkedIn, GitHub, or Twitter (X). Here are the links:\n\n🔗 LinkedIn: https://www.linkedin.com/in/emre-g%C3%B6kcek-0928a625b/\n🔗 GitHub: https://github.com/ahemyu\n🔗 Twitter: https://twitter.com/ahemyu1" }
     ];
 
     // Typing speeds
