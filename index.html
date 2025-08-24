@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Emre Gökcek</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
       margin: 0;
@@ -37,7 +38,7 @@
     /* Header bar */
     .chat-header {
       background: #1e293b;
-      padding: 16px;
+      padding: 12px 16px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -45,8 +46,8 @@
     }
 
     .chat-header img {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       object-fit: cover;
     }
@@ -58,18 +59,18 @@
 
     .chat-header .info .name {
       font-weight: 600;
-      font-size: 16px;
+      font-size: 15px;
     }
 
     .chat-header .info .status {
-      font-size: 13px;
+      font-size: 12px;
       color: #22c55e;
     }
 
     /* Messages */
     .chat-messages {
       flex: 1;
-      padding: 20px;
+      padding: 16px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
@@ -78,7 +79,7 @@
 
     .message {
       max-width: 80%;
-      padding: 12px 16px;
+      padding: 10px 14px;
       border-radius: 16px;
       line-height: 1.4;
       font-size: 15px;
@@ -141,14 +142,14 @@
 
     /* Fake input */
     .chat-input {
-      padding: 16px;
+      padding: 12px;
       background: #0f172a;
       border-top: 1px solid #334155;
     }
 
     .chat-input input {
       width: 100%;
-      padding: 12px;
+      padding: 10px;
       border-radius: 8px;
       border: none;
       background: #1e293b;
@@ -158,6 +159,41 @@
 
     .chat-input input:disabled {
       opacity: 0.6;
+    }
+
+    /* Social icons inside bot message */
+    .social-links {
+      margin-top: 8px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-links a {
+      color: #f1f5f9;
+      font-size: 18px;
+      transition: color 0.2s;
+    }
+
+    .social-links a:hover {
+      color: #3b82f6;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 600px) {
+      .chat-messages {
+        padding: 12px;
+      }
+      .message {
+        max-width: 90%;
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+      .chat-header .info .name {
+        font-size: 14px;
+      }
+      .chat-header .info .status {
+        font-size: 11px;
+      }
     }
   </style>
 </head>
@@ -184,7 +220,7 @@
   <script>
     const chat = document.getElementById("chat");
 
-    // Predefined conversation (now in "you" / "I" perspective)
+    // Predefined conversation
     const conversation = [
       { sender: "user", text: "Tell me about yourself." },
       { sender: "bot", text: "I’m Emre Gökcek, a CS student at Heinrich-Heine University Düsseldorf. I’m passionate about AI and currently work in Data Science, focusing on semantic search and retrieval-augmented generation." },
@@ -193,9 +229,9 @@
       { sender: "user", text: "What experience do you have?" },
       { sender: "bot", text: "I’ve worked as a Data Science Working Student at FoxBase, focusing on AI-driven solutions. I’ve also freelanced for Outlier, where I worked on LLM evaluation and prompt engineering. On top of that, I’m writing my thesis on deep reinforcement learning for quadruped locomotion." },
       { sender: "user", text:"What do you like to do in your free time?"},
-      { sender: "bot", text: "I am actively trainng BJJ multiple times a week and also like to compete in tournaments a couple times a year. I also like to code on stuff that I want and does not exist yet. I love the japanese culture sp I am learning the language since 2 years and reached A2 so far. In the evenings I mostly read russian, german and french novels from before 1950." },
+      { sender: "bot", text: "I actively train BJJ multiple times a week and also compete in tournaments a couple of times a year. I also like to code projects that don’t exist yet but I want to use. I love Japanese culture, so I’ve been learning the language for 2 years (currently A2). In the evenings, I mostly read Russian, German, and French novels from before 1950." },
       { sender: "user", text: "Where can I contact you?" },
-      { sender: "bot", text: "You can reach me on LinkedIn, GitHub, or Twitter (X). Here are the links:\n\n🔗 LinkedIn: https://www.linkedin.com/in/emre-g%C3%B6kcek-0928a625b/\n🔗 GitHub: https://github.com/ahemyu\n🔗 Twitter: https://twitter.com/ahemyu1" }
+      { sender: "bot", text: "You can reach me here:" }
     ];
 
     // Typing speeds
@@ -214,11 +250,23 @@
           chat.appendChild(indicator);
           chat.scrollTop = chat.scrollHeight;
 
-          await new Promise(r => setTimeout(r, 800)); // wait before showing bot text
+          await new Promise(r => setTimeout(r, 800));
           chat.removeChild(indicator);
         }
 
         await typeMessage(sender, text, sender === "bot" ? botSpeed : userSpeed);
+
+        // Add social icons after last bot message
+        if (i === conversation.length - 1) {
+          const links = document.createElement("div");
+          links.className = "social-links";
+          links.innerHTML = `
+            <a href="https://www.linkedin.com/in/emre-g%C3%B6kcek-0928a625b/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/ahemyu" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com/ahemyu1" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          `;
+          chat.lastChild.appendChild(links);
+        }
       }
     }
 
