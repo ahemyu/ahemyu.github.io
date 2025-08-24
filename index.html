@@ -8,26 +8,67 @@
     body {
       margin: 0;
       font-family: "Inter", sans-serif;
-      background: #0f172a;
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
       color: #f1f5f9;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .chat-container {
       width: 100%;
-      max-width: 600px;
-      height: 90vh;
-      background: #1e293b;
+      max-width: 800px;
+      height: 95vh;
+      background: rgba(30, 41, 59, 0.95);
       border-radius: 12px;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     }
 
+    /* Header bar */
+    .chat-header {
+      background: #1e293b;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid #334155;
+    }
+
+    .chat-header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .chat-header .info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-header .info .name {
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .chat-header .info .status {
+      font-size: 13px;
+      color: #22c55e;
+    }
+
+    /* Messages */
     .chat-messages {
       flex: 1;
       padding: 20px;
@@ -100,6 +141,7 @@
       }
     }
 
+    /* Fake input */
     .chat-input {
       padding: 16px;
       background: #0f172a;
@@ -123,7 +165,19 @@
 </head>
 <body>
   <div class="chat-container">
+    <!-- Header -->
+    <div class="chat-header">
+      <img src="https://avatars.githubusercontent.com/u/000000?v=4" alt="Profile" />
+      <div class="info">
+        <span class="name">Emre Gökcek</span>
+        <span class="status">● online</span>
+      </div>
+    </div>
+
+    <!-- Messages -->
     <div class="chat-messages" id="chat"></div>
+
+    <!-- Fake input -->
     <div class="chat-input">
       <input type="text" placeholder="Type a message..." disabled />
     </div>
